@@ -7,7 +7,9 @@ export interface IUser {
   id: number;
   name: string;
   username: string;
-  email: string;
+  email: string;  // tipizeesana ar interface paliidziibu, jo to var talak eksportet citas klases, parizmantot
+  phone: string;
+  website: string;
 }
 
 const UserList = () => {
@@ -16,7 +18,7 @@ const UserList = () => {
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
-    axios
+    axios  // axios fetch metodes vietaa
       .get<IUser[]>("https://jsonplaceholder.typicode.com/users")
       .then((res) => res.data)
       .then((data) => {
@@ -28,14 +30,14 @@ const UserList = () => {
         setError(error.message);
         setLoading(false);
       });
-  }, []);
+  }, []);  // useEffect ar tuksu masivu, tatad izpildas vienu reizi, pec pirmas renderesanas
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">Список пользователей</h2>
+      <h2 className="mb-4">List of users</h2>
       <div className="row g-3">
         {users.map((user) => (
-          <User key={v4()} user={user} />
+          <User key={v4()} user={user} />  // v4 unikaalaa ID metode no uuid bibliotekas
         ))}
       </div>
       <div>
@@ -45,7 +47,7 @@ const UserList = () => {
           </div>
         )}
       </div>
-      <div>{error && <>Ошибка при загрузке данных: {error}</>}</div>
+      <div>{error && <>Error by loading data: {error}</>}</div>
     </div>
   );
 };
