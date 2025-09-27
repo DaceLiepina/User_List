@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const User: FC<{ user: IUser }> = ({ user: { id, name, username, email } }) => {
   // funktional component - FC - arii jaimportee no React
   return (
-    <div className="col-12 col-md-6 col-lg-4" key={v4()}>
+    <div className="col-12 col-md-6 col-lg-4 pt-10" key={v4()}>
       <div className="card h-100 shadow-sm">
         <div className="card-header bg-info text-black">
           <h5 className="mb-3">{name}</h5>

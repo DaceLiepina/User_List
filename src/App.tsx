@@ -11,7 +11,7 @@ import PostsId from "./components/UserList/PostId";
 function App() {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg-sm fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg-sm  sticky-top ">
         <div className="container">
           <Link className="navbar-brand fw-bold text-uppercase" to="/">
             Home page{" "}
