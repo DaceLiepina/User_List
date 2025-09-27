@@ -54,14 +54,25 @@ const UserProfile = () => {
                 </a>
               </p>
               <Link to="/users" className="btn btn-secondary btn-sm">
-                Atgriezties pie lietotaja saraksta
+                Return to User List
               </Link>
-              <h4></h4>
+              
             </div>
           </div>
         </div>
+        
       </div>
+      <div>
+        {loading && (
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        )}
+      </div>
+      <div>{error && <>Error loading data: {error}</>}</div>
     </div>
+    
+    
   );
 };
 
