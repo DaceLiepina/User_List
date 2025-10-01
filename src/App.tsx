@@ -6,10 +6,24 @@ import UserProfile from "./components/UserList/UserProfile";
 import CommentsId from "./components/UserList/CommentsId";
 import PostList from "./components/UserList/PostList";
 import PostsId from "./components/UserList/PostId";
+import { createContext, useContext, type Dispatch } from "react";
 
+export interface IThemeContext {
+  theme: 'light' | 'dark',
+  setTheme: Dispatch<React.SetStateAction<"light" | "dark">>
+} 
+
+export const ThemeContext = createContext<IThemeContext>({
+  theme: 'light',
+setTheme: () => {}
+
+})
 // SPA - Single Page Application
 function App() {
-  return (
+  const {theme, setTheme} = useContext(ThemeContext);
+  const isDark = theme === "dark";
+  const newTheme = isDark ? 'light' : 'dark'
+  return(
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg-sm  sticky-top ">
         <div className="container">
@@ -32,6 +46,12 @@ function App() {
                 <Link className="nav-link" to="/posts">
                   Posts
                 </Link>
+              </li>
+               <li className="nav-item">
+                <button
+                  className="nav-link btn btn-info"
+                  onClick={() => setTheme(newTheme)}  
+                >To change theme to: {newTheme}</button>
               </li>
             </ul>
           </div>

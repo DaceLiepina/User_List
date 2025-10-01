@@ -1,13 +1,26 @@
-import type { FC } from "react";
+import { useContext, type FC } from "react";
 import { v4 } from "uuid";
 import type { IUser } from "./UserList";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../../App";
 
-const User: FC<{ user: IUser }> = ({ user: { id, name, username, email } }) => {
+const User: FC<{ user: IUser }> = ({ user: { id, name, username, email, } }) => {
+
+  const {theme} = useContext(ThemeContext);
+  const isDark = theme ==='dark'
   // funktional component - FC - arii jaimportee no React
+
+  // console.log("Значение переменной isDark равно " + isDark);
+  // console.log('Сэр Уинстон Черчилль сказал: "Я хочу обратиться..."');
+
   return (
-    <div className="col-12 col-md-6 col-lg-4 pt-10" key={v4()}>
-      <div className="card h-100 shadow-sm">
+    <div
+      className={`col-12 col-md-6 col-lg-4`}
+      key={v4()}
+    >
+      <div className={`card h-100 shadow-sm ${
+        isDark ? "bg-dark text-light" : "bg-light text-dark"
+      }`}>
         <div className="card-header bg-info text-black">
           <h5 className="mb-3">{name}</h5>
           <h6 className="card-subtitle mb-2 text-muted">@{username}</h6>
